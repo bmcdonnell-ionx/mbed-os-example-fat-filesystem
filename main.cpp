@@ -7,13 +7,13 @@
 // Failures using NXP LPC4088 micro, on Embedded Artists' LPC4088 QuickStart Board:
 //
 // - With mbed online compiler, 2017-12-08 (armcc):
-//   - error writing at line 5974
-//   - file readback ends early after line 5888
+//   - error writing at line 5974 (~35 KiB)
+//   - file readback ends early after line 5888 (~512 bytes fewer)
 //
 // - With NXP MCUXpresso IDE v10.1.0 [Build 589] [2017-11-14]
 //   (gcc-arm-none-eabi):
-//   - error writing at line 4779
-//   - file readback ends early after line 4608
+//   - error writing at line 4779 (~28 KiB)
+//   - file readback ends early after line 4608 (~1 KiB fewer)
 
 // 6 characters per line (4 digits + "\r\n")
 // * 10000 lines = 60 KB, should fit on 128 * 512 = 64 KiB block device
