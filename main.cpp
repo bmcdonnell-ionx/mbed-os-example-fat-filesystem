@@ -6,10 +6,20 @@
 
 #define SERIAL_BAUD_RATE (115200)
 
-// Using NXP LPC4088 micro:
-// - error writing at line 4779
-// - file readback ends early after line 4608
-#define NUM_INTS         (5000)
+// Failures using NXP LPC4088 micro, on Embedded Artists' LPC4088 QuickStart Board:
+//
+// - With mbed online compiler, 2017-12-08 (armcc):
+//   - error writing at line 5974
+//   - file readback ends early after line 5888
+//
+// - With NXP MCUXpresso IDE v10.1.0 [Build 589] [2017-11-14]
+//   (gcc-arm-none-eabi):
+//   - error writing at line 4779
+//   - file readback ends early after line 4608
+
+// 6 characters per line (4 digits + "\r\n")
+// * 10000 lines = 60 KB, should fit on 128 * 512 = 64 KiB block device
+#define NUM_INTS         (10000)
 #define FIELD_WIDTH_STR  "4"
 
 HeapBlockDevice bd(128 * 512, 512);
