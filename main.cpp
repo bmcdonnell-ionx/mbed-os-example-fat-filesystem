@@ -7,6 +7,7 @@
 #define SERIAL_BAUD_RATE (115200)
 #define NUM_INTS         (20)
 #define FIELD_WIDTH_STR  "2"
+#define BUF_SIZE_BYTES   (16)
 
 HeapBlockDevice bd(128 * 512, 512);
 FATFileSystem fs("fs");
@@ -71,9 +72,9 @@ int main() {
   errno_error(fd);
 
   printf("Dumping file to screen.\r\n");
-  char buff[16] = {0};
+  char buff[BUF_SIZE_BYTES];
   while (!feof(fd)){
-    int size = fread(&buff[0], 1, 15, fd);
+    int size = fread(&buff[0], 1, sizeof buff, fd);
     fwrite(&buff[0], 1, size, stdout);
   }
   printf("EOF.\r\n");
