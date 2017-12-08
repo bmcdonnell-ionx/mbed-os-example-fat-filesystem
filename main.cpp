@@ -4,8 +4,11 @@
 #include <stdio.h>
 #include <errno.h>
 
-#define NUM_INTS         (20)
-#define FIELD_WIDTH_STR  "2"
+// Using NXP LPC4088 micro:
+// - error writing at line 4779
+// - file readback ends early after line 4608
+#define NUM_INTS         (5000)
+#define FIELD_WIDTH_STR  "4"
 
 HeapBlockDevice bd(128 * 512, 512);
 FATFileSystem fs("fs");
