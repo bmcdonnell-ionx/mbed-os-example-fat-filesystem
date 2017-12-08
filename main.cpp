@@ -4,11 +4,14 @@
 #include <stdio.h>
 #include <errno.h>
 
+#define SERIAL_BAUD_RATE (115200)
 #define NUM_INTS         (20)
 #define FIELD_WIDTH_STR  "2"
 
 HeapBlockDevice bd(128 * 512, 512);
 FATFileSystem fs("fs");
+
+Serial s(USBTX, USBRX, SERIAL_BAUD_RATE);
 
 void return_error(int ret_val){
   if (ret_val)
